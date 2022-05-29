@@ -34,11 +34,11 @@ public class JwtController {
         }
         catch (UsernameNotFoundException e){
             e.printStackTrace();
-            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Username not found");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Username not found");
         }
         catch (BadCredentialsException e){
             e.printStackTrace();
-            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unauthorized");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unauthorized");
         }
 
         UserDetails userDetails = this.customUserDetailService.loadUserByUsername(jwtRequest.getUsername());
